@@ -1,0 +1,78 @@
+<h2> Basic Email Reader (Lecture 1)</h2>
+
+<form #emailForm="ngForm" (ngSubmit)="send(emailForm)">
+    <div class="form-group">
+        <label> From </label>
+        <input class="form-control"
+            type="text"
+            required
+            [(ngModel)]="email.from"
+            name="from"
+            #from="ngModel"
+            [ngClass]="from.valid || from.pristine ? '' : 'bg-danger'"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+            >
+        <div class="alert alert-danger" *ngIf="from.touched && !from.valid">
+            <div *ngIf="from.errors && from.errors['required']">
+                Receiver address is required
+            </div>
+            <div *ngIf="from.errors && from.errors['pattern']">
+                Email does not match the required pattern.
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label> To </label>
+        <input class="form-control"
+            type="text"
+            required
+            [(ngModel)]="email.to"
+            name="to"
+            #to="ngModel"
+            [ngClass]="to.valid || to.pristine ? '' : 'bg-danger'"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+            >
+        <div class="alert alert-danger" *ngIf="to.touched && !to.valid">
+            <div *ngIf="to.errors && to.errors['required']">
+                Receiver address is required
+            </div>
+            <div *ngIf="to.errors && to.errors['pattern']">
+                Email does not match the required pattern.
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label> Subject </label>
+        <input class="form-control" type="text" [(ngModel)]="email.subject" name="subject">
+    </div>
+    <div class="form-group">
+        <label> Body </label>
+        <textarea class="form-control" type="textarea" [(ngModel)]="email.body" name="body"></textarea>
+    </div>
+</form>
+    
+    <br>
+    <div class="text-right">
+        <button class="btn btn-primary btn-sm mr-1"
+            type="submit"
+            [disabled]="!emailForm.valid">
+            Send
+        </button>
+        &nbsp;
+        <button class="btn btn-primary btn-sm mr-1"
+            type="button"
+            (click)="clear()">
+            Clear
+        </button>
+    </div>
+    <br>
+
+    <h3> Email Preview </h3>
+    
+    <p>
+        From: {{email.from}} <br>
+        To: {{email.to}} <br>
+        Subject: {{email.subject != '' ? email.subject : 'Empty'}} <br><br>
+    
+        {{email.body}}
+    </p>

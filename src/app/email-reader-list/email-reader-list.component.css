@@ -1,0 +1,7 @@
+.border-valid {
+    border: 10px solid rgb(64, 179, 64)
+}
+
+.border-invalid {
+    border: 10px solid rgb(255, 211, 67)
+}
