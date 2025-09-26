@@ -1,0 +1,119 @@
+<h2>List Email Reader (Exercise 2, Assessment 1)</h2>
+
+<form #emailForm="ngForm" (ngSubmit)="send(emailForm)">
+    <div class="form-group">
+        <label> From </label>
+        <input class="form-control" highlightOnFocus
+            type="text"
+            required
+            [(ngModel)]="currentEmail.from"
+            name="from"
+            #from="ngModel"
+            [ngClass]="{
+                'border-valid': from.valid,
+                'border-invalid bg-danger': from.touched && !from.valid
+            }"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+            >
+        <div class="alert alert-danger" *ngIf="from.touched && !from.valid">
+            <div *ngIf="from.errors && from.errors['required']">
+                Sender address is required
+            </div>
+            <div *ngIf="from.errors && from.errors['pattern']">
+                Email does not match the required pattern.
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label> To </label>
+        <input class="form-control" highlightOnFocus
+            type="text"
+            required
+            [(ngModel)]="currentEmail.to"
+            name="to"
+            #to="ngModel"
+            [ngClass]="{
+                'border-valid': to.valid,
+                'border-invalid bg-danger': to.touched && !to.valid
+            }"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+            >
+        <div class="alert alert-danger" *ngIf="to.touched && !to.valid">
+            <div *ngIf="to.errors && to.errors['required']">
+                Receiver address is required
+            </div>
+            <div *ngIf="to.errors && to.errors['pattern']">
+                Email does not match the required pattern.
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label> Subject </label>
+        <input class="form-control" highlightOnFocus
+            type="text" 
+            required
+            #subject="ngModel"
+            [(ngModel)]="currentEmail.subject" 
+            name="subject"
+            [ngClass]="{
+                'border-valid': subject.valid,
+                'border-invalid bg-danger': subject.touched && !subject.valid
+            }"
+            pattern=".{10,50}"
+            >
+        <div class="alert alert-danger" *ngIf="subject.touched && !subject.valid">
+            <div *ngIf="subject.errors && subject.errors['required']">
+                A subject is required
+            </div>
+            <div *ngIf="subject.errors && subject.errors['pattern']">
+                Subject has to be between 10 and 50 characters long, for some reason...
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label> Body </label>
+        <textarea class="form-control" highlightOnFocus type="textarea" [(ngModel)]="currentEmail.body" name="body"></textarea>
+    </div>
+    <p *ngIf="(
+        (from.touched && from.invalid) || 
+        (to.touched && to.invalid) || 
+        (subject.touched && subject.invalid)) 
+        && !emailForm.valid"> 
+        I apologize for the mix of red and yellow coloring, <br>
+        but it was part of the assignment requirements...
+    </p>
+    <br>
+    <div class="text-right">
+        <button class="btn btn-primary btn-sm mr-1"
+            type="submit"
+            [disabled]="!emailForm.valid">
+            Send
+        </button>
+        &nbsp;
+        <button class="btn btn-primary btn-sm mr-1"
+            type="button"
+            (click)="clear()">
+            Clear
+        </button>
+    </div>
+    <br>
+</form>
+    
+
+<div *ngIf="sent.length > 0 then emailTable else placeholder"></div>
+<ng-template #placeholder> 
+    <h4> The list of emails is empty </h4>
+</ng-template>
+<ng-template #emailTable>
+    <table class="table">
+        <tr>
+            <td>To</td>
+            <td>Subject</td>
+        </tr>
+        <tr *ngFor="let email of sent">
+            <td>{{ email.to }}</td>
+            <td>{{ email.subject }}</td>
+        </tr>
+
+</table>
+</ng-template>

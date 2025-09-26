@@ -1,4 +1,4 @@
-<h2>List Email Reader (Leccture 2, Assesment 1)</h2>
+<h2>Email form (Exercise, Assessment 2)</h2>
 
 <form #emailForm="ngForm" (ngSubmit)="send(emailForm)">
     <div class="form-group">
@@ -11,7 +11,7 @@
             #from="ngModel"
             [ngClass]="{
                 'border-valid': from.valid,
-                'border-invalid bg-danger': from.touched && !from.valid
+                'border-invalid': from.touched && !from.valid
             }"
             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
             >
@@ -34,7 +34,7 @@
             #to="ngModel"
             [ngClass]="{
                 'border-valid': to.valid,
-                'border-invalid bg-danger': to.touched && !to.valid
+                'border-invalid': to.touched && !to.valid
             }"
             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
             >
@@ -57,7 +57,7 @@
             name="subject"
             [ngClass]="{
                 'border-valid': subject.valid,
-                'border-invalid bg-danger': subject.touched && !subject.valid
+                'border-invalid': subject.touched && !subject.valid
             }"
             pattern=".{10,50}"
             >
@@ -98,22 +98,3 @@
     </div>
     <br>
 </form>
-    
-
-<div *ngIf="sent.length > 0 then emailTable else placeholder"></div>
-<ng-template #placeholder> 
-    <h4> The list of emails is empty </h4>
-</ng-template>
-<ng-template #emailTable>
-    <table class="table">
-        <tr>
-            <td>To</td>
-            <td>Subject</td>
-        </tr>
-        <tr *ngFor="let email of sent">
-            <td>{{ email.to }}</td>
-            <td>{{ email.subject }}</td>
-        </tr>
-
-</table>
-</ng-template>

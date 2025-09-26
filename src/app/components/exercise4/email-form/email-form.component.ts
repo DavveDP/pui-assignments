@@ -1,26 +1,27 @@
-import { NgClass, NgFor, NgIf } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
+import { Email } from '../../../interfaces/email';
 import { FormsModule, NgForm } from '@angular/forms';
-import { Email } from '../interfaces/email';
-import { HighlightOnFocusDirective } from '../directives/highlight-on-focus.directive';
+import { NgClass, NgIf, NgFor } from '@angular/common';
+import { HighlightOnFocusDirective } from '../../../directives/highlight-on-focus.directive';
+import { EmailService } from '../../../services/email-service.service';
 
 @Component({
-  selector: 'app-email-reader-list',
+  selector: 'app-email-form',
   standalone: true,
   imports: [FormsModule, NgClass, NgIf, NgFor, HighlightOnFocusDirective],
-  templateUrl: './email-reader-list.component.html',
-  styleUrl: './email-reader-list.component.css'
+  templateUrl: './email-form.component.html',
+  styleUrl: './email-form.component.css'
 })
-export class EmailReaderListComponent {
-
+export class EmailFormComponent {
+  constructor(private emailService: EmailService) {}
+  
   currentEmail: Email = {
+      id: -1,
       from: "",
       to: "",
       subject: "",
       body: ""
     };
-
-  sent: Email[] = [];
 
   @ViewChild('emailForm') form: any;
 
@@ -31,7 +32,7 @@ export class EmailReaderListComponent {
   send(form: NgForm): void {
     // We can assume that the email is valid, since the form shouldn't allow us to send it
     // We make a copy of currentEmail, as its data gets cleared when we clear the form
-    this.sent.push({...this.currentEmail}); 
+    this.emailService.send({...this.currentEmail}); 
     window.alert(
       "The email " + this.currentEmail.subject + 
       " has been sent to: " + this.currentEmail.to);

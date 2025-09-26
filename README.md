@@ -6,6 +6,13 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 David Riley: david.riley@alumnos.upm.es
 
+## Exercise progress:
+
+- Exercise 1: Done
+- Exercise 2 (Assessment 1): Done
+- Exercise 3: Not Done
+- Exercise 4 (Assessment 2): Not Done
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.

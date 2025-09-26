@@ -1,18 +1,45 @@
 <main class="main">
   <div class="content">
     <div class="left-side">
-      <h1>PUI web assignment: {{ title }}</h1>
+      <h1>PUI web assignments: {{ title }}</h1>
       <p> See drop down menu below... </p>
     </div>
     <div class="row navbar">
       <div class="col"> 
         <div ngbDropdown class="d-inline-block">
-          <button class="btn btn-outline-primary" id="dd-email-readers" ngbDropdownToggle>
-            Email Readers
+          <button class="btn btn-outline-primary" id="dd-exercise1" ngbDropdownToggle>
+            Exercise 1
           </button>
-          <div ngbDropdownMenu aria-labelledby="dd-email-readers">
-            <button ngbDropdownItem [routerLink]="['/email-reader-basic']"> Basic (Lecture 1)</button>
-            <button ngbDropdownItem [routerLink]="['/email-reader-list']"> List (Lecture 2, Assignment 1)</button>
+          <div ngbDropdownMenu aria-labelledby="dd-exercise1">
+            <button ngbDropdownItem [routerLink]="['/exercise1']"> Email Reader Basic </button>
+          </div>
+        </div>
+
+        <div ngbDropdown class="d-inline-block">
+          <button class="btn btn-outline-primary" id="dd-exercise2" ngbDropdownToggle>
+            Exercise 2
+          </button>
+          <div ngbDropdownMenu aria-labelledby="dd-exercise2">
+            <button ngbDropdownItem [routerLink]="['/exercise2']"> Email Reader List </button>
+          </div>
+        </div>
+
+        <div ngbDropdown class="d-inline-block">
+          <button class="btn btn-outline-primary" id="dd-exercise3" ngbDropdownToggle>
+            Exercise 3
+          </button>
+          <div ngbDropdownMenu aria-labelledby="dd-exercise3">
+            <button ngbDropdownItem [routerLink]="['/exercise3']"> Email with service </button>
+          </div>
+        </div>
+
+        <div ngbDropdown class="d-inline-block">
+          <button class="btn btn-outline-primary" id="dd-exercise4" ngbDropdownToggle>
+            Exercise 4
+          </button>
+          <div ngbDropdownMenu aria-labelledby="dd-exercise4">
+            <button ngbDropdownItem [routerLink]="['/exercise4-form']"> Email Form </button>
+            <button ngbDropdownItem [routerLink]="['/exercise4-list']"> Email Viewer </button>
           </div>
         </div>
       </div>

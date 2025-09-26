@@ -1,7 +1,8 @@
 import { NgClass, NgIf } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import { Email } from '../interfaces/email';
+import { Email } from '../../../interfaces/email';
+import { EmailFormComponent } from '../../../interfaces/EmailComponent';
 
 @Component({
   selector: 'app-email-reader-basic',
@@ -10,9 +11,10 @@ import { Email } from '../interfaces/email';
   templateUrl: './email-reader-basic.component.html',
   styleUrl: './email-reader-basic.component.css'
 })
-export class EmailReaderBasicComponent implements OnInit {
+export class EmailReaderBasicComponent implements OnInit, EmailFormComponent {
 
-  email: Email = {
+  currentEmail: Email = {
+      id: -1,
       from: "",
       to: "",
       subject: "",
@@ -21,7 +23,8 @@ export class EmailReaderBasicComponent implements OnInit {
   @ViewChild('emailForm') form: any;
 
   ngOnInit(): void {
-    this.email = {
+    this.currentEmail = {
+      id: -1,
       from: "",
       to: "",
       subject: "",
@@ -30,7 +33,7 @@ export class EmailReaderBasicComponent implements OnInit {
   }
 
   send(form: NgForm): void {
-    window.alert("Sending email with subject: " + this.email.subject + " to: " + this.email.to);
+    window.alert("Sending email with subject: " + this.currentEmail.subject + " to: " + this.currentEmail.to);
     this.clear();
   }
 

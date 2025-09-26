@@ -1,0 +1,17 @@
+<div *ngIf="emailService.getSendCount() > 0 then emailTable else placeholder"></div>
+<ng-template #placeholder> 
+    <h4> The list of emails is empty </h4>
+</ng-template>
+<ng-template #emailTable>
+    <table class="table">
+        <tr>
+            <td>To</td>
+            <td>Subject</td>
+        </tr>
+        <tr *ngFor="let email of emailService.getAll()">
+            <td>{{ email.to }}</td>
+            <td>{{ email.subject }}</td>
+        </tr>
+
+</table>
+</ng-template>
