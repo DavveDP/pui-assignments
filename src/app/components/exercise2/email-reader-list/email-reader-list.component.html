@@ -74,14 +74,6 @@
         <label> Body </label>
         <textarea class="form-control" highlightOnFocus type="textarea" [(ngModel)]="currentEmail.body" name="body"></textarea>
     </div>
-    <p *ngIf="(
-        (from.touched && from.invalid) || 
-        (to.touched && to.invalid) || 
-        (subject.touched && subject.invalid)) 
-        && !emailForm.valid"> 
-        I apologize for the mix of red and yellow coloring, <br>
-        but it was part of the assignment requirements...
-    </p>
     <br>
     <div class="text-right">
         <button class="btn btn-primary btn-sm mr-1"
@@ -114,6 +106,5 @@
             <td>{{ email.to }}</td>
             <td>{{ email.subject }}</td>
         </tr>
-
-</table>
+    </table>
 </ng-template>

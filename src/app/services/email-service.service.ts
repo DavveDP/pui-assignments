@@ -13,19 +13,19 @@ export class EmailService {
   private fillWithDebugEmails(): void {
     let nextId: number = 0;
     this.emails = [
-      {id: nextId++, from: "andreas@test.io", to: "david@test.io", subject: "Hej", body: ""},
-      {id: nextId++, from: "andreas@test.io", to: "david@test.io", subject: "Hej", body: ""},
-      {id: nextId++, from: "sara@test.io", to: "arvid@test.io", subject: "Hej", body: ""},
-      {id: nextId++, from: "gunnar@test.io", to: "evert@test.io", subject: "Hej", body: ""},
-      {id: nextId++, from: "eva@test.io", to: "evert@test.io", subject: "Hej", body: ""}
+      {id: nextId++, from: "andreas@test.io", to: "david@test.se", subject: "Halloj", body: "my body"},
+      {id: nextId++, from: "andreas@test.io", to: "david@test.se", subject: "Nämen va kul!", body: "dadiwjdwi"},
+      {id: nextId++, from: "sara@test.io", to: "arvid@test.io", subject: "Ojdå", body: ""},
+      {id: nextId++, from: "gunnar@test.io", to: "evert@annat.dk", subject: "Helt onödigt", body: ""},
+      {id: nextId++, from: "eva@test.io", to: "evert@annat.dk", subject: "Påhittat", body: ""},
+      {id: nextId++, from: "carro@test.io", to: "nora@annat.es", subject: "Påhittat", body: ""}
     ];
   }
 
   emails: Email[] = [];
 
   send(email: Email): void {
-    window.alert(
-      "The email " + email.subject + " has been sent to: " + email.to);
+    email.id = this.emails.length;
     this.emails.push(email);
   }
 

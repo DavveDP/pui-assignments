@@ -11,7 +11,7 @@
             #from="ngModel"
             [ngClass]="{
                 'border-valid': from.valid,
-                'border-invalid bg-danger': from.touched && !from.valid
+                'border-invalid': from.touched && !from.valid
             }"
             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
             >
@@ -34,9 +34,9 @@
             #to="ngModel"
             [ngClass]="{
                 'border-valid': to.valid,
-                'border-invalid bg-danger': to.touched && !to.valid
+                'border-invalid': to.touched && !to.valid
             }"
-            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+            pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$'
             >
         <div class="alert alert-danger" *ngIf="to.touched && !to.valid">
             <div *ngIf="to.errors && to.errors['required']">
@@ -57,7 +57,7 @@
             name="subject"
             [ngClass]="{
                 'border-valid': subject.valid,
-                'border-invalid bg-danger': subject.touched && !subject.valid
+                'border-invalid': subject.touched && !subject.valid
             }"
             pattern=".{10,50}"
             >
@@ -74,14 +74,6 @@
         <label> Body </label>
         <textarea class="form-control" highlightOnFocus type="textarea" [(ngModel)]="currentEmail.body" name="body"></textarea>
     </div>
-    <p *ngIf="(
-        (from.touched && from.invalid) || 
-        (to.touched && to.invalid) || 
-        (subject.touched && subject.invalid)) 
-        && !emailForm.valid"> 
-        I apologize for the mix of red and yellow coloring, <br>
-        but it was part of the assignment requirements...
-    </p>
     <br>
     <div class="text-right">
         <button class="btn btn-primary btn-sm mr-1"
@@ -97,7 +89,15 @@
         </button>
     </div>
     <br>
+<div class="col">
+    <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" name="withBody" id="switchWithBody" [(ngModel)]="withBodyChecked">
+        <label class="form-check-label" for="switchWithBody"> Show only emails with body </label>
+    </div>
+    Search: <input type="text" class="form-control" name="filterStr" [(ngModel)]="filterStr">
+</div>
 </form>
+<br>
     
 
 <div *ngIf="emailService.getSendCount() > 0 then emailTable else placeholder"></div>
@@ -107,13 +107,14 @@
 <ng-template #emailTable>
     <table class="table">
         <tr>
+            <td>From</td>
             <td>To</td>
             <td>Subject</td>
         </tr>
-        <tr *ngFor="let email of emailService.getAll()">
+        <tr *ngFor="let email of emailService.getAll()! | filterContent:filterStr | withBody:withBodyChecked">
+            <td>{{ email.from }}</td>
             <td>{{ email.to }}</td>
             <td>{{ email.subject }}</td>
         </tr>
-
-</table>
+    </table>
 </ng-template>
