@@ -13,21 +13,21 @@ import { Email } from '../../../interfaces/email';
 export class EmailViewerComponent implements OnInit{
   constructor(private route: ActivatedRoute, private emailService: EmailService) {}
   ngOnInit(): void {
-    let idToShow = this.route.snapshot.paramMap.get('id');
+    let idToShow = this.route.snapshot.queryParamMap.get('id');
     if (idToShow == null) {
-      console.log("Missing queryParam 'id' when loading EmailViewer");
+      console.error("Missing queryParam 'id' when loading EmailViewer");
       // outside the scope of the exercise to handle errors...
       return;
     }
     let n = parseInt(idToShow);
-    if (!n) {
-      console.log("Unable to parse query param 'id' to number");
+    if (Number.isNaN(n)) {
+      console.error("Unable to parse query param 'id' to number");
       // outside the scope of the exercise to handle errors...
       return;
     }
     let email = this.emailService.get(n);
     if (!email) {
-      console.log("No email found with id: " + n);
+      console.error("No email found with id: " + n);
       return;
     }
     this.email = email;

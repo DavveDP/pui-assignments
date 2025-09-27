@@ -11,7 +11,7 @@ David Riley: david.riley@alumnos.upm.es
 - Exercise 1: Done
 - Exercise 2 (Assessment 1): Done
 - Exercise 3: Done (Except email view, waste of time)
-- Exercise 4 (Assessment 2): Not Done
+- Exercise 4 (Assessment 2): Done
 
 ## Development server
 

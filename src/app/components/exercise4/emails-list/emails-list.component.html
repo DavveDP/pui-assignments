@@ -3,15 +3,36 @@
     <h4> The list of emails is empty </h4>
 </ng-template>
 <ng-template #emailTable>
-    <table class="table">
-        <tr>
-            <td>To</td>
-            <td>Subject</td>
-        </tr>
-        <tr *ngFor="let email of emailService.getAll()">
-            <td>{{ email.to }}</td>
-            <td>{{ email.subject }}</td>
-        </tr>
+    <h3>Sent emails:</h3>
+    <table class="table table-hover table-bordered">
+        <thead class="table-light">
+            <tr>
+                <td>To</td>
+                <td>Subject</td>
+                <td>Actions</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let email of emailService.getAll()">
+                <td>{{ email.to }}</td>
+                <td>{{ email.subject }}</td>
+                <td>
+                    <a 
+                    class="btn btn-sm btn-primary me-2"
+                    [routerLink]="['/exercise4-viewer']"
+                    [queryParams]="{'id':email.id}"
+                    >
+                        View
+                    </a>
+                    <button
+                    class="btn btn-sm btn-danger"
+                    (click)="deleteEmail(email.id)"
+                    >
+                        Delete
+                    </button>
+                </td>
+            </tr>
+        </tbody>
 
 </table>
 </ng-template>

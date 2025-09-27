@@ -41,6 +41,13 @@ export class EmailService {
     return structuredClone(this.emails.find(e => e.id == id)) ?? null;
   }
 
+  delete(id: number) : boolean {
+    let found = this.emails.findIndex(email => email.id == id);
+    if (found < 0) return false;
+    this.emails.splice(found,1);
+    return true;
+  }
+
   clear(): void {
     this.emails = [];
   }
