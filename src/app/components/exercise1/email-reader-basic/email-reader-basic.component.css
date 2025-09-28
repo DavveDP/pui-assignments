@@ -1,0 +1,109 @@
+:host {
+  --maxw: 900px;
+  --label-w: 46px 705px; 
+  --gap: 12px;
+
+  --card-bg: #ffffff;
+  --card-bd: #e6e8ee;
+  --focus: #3e66a6;
+  --danger: #d76a6a;
+
+  --btn-start: #a9c2f0;
+  --btn-end:   #6f95d6;
+  --btn-bd:    #3e66a6;
+}
+
+h2 {
+  margin: 18px 0 8px;
+  font-weight: 350;
+  font-family: 'Times New Roman', Times, serif;
+  line-height: 1.1;
+  font-size: clamp(22px, 2.4vw, 28px);
+  padding: 5px 120px;
+}
+
+.form-group{
+  display: grid;
+  grid-template-columns: var(--label-w) 1fr;
+  align-items: center;
+  column-gap: var(--gap);
+  row-gap: 6px;
+  margin-bottom: 14px;
+  padding: 0 120px;
+}
+
+label{
+  margin: 0;
+  font-weight: 350;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.form-control{
+  border-radius: 10px;
+  border: 1px solid #cbd5e1;
+  padding: 8px;
+  font-size: 16px;
+  font-family: 'Times New Roman', Times, serif;
+  transition: box-shadow .15s, border-color .15s, background-color .2s;
+}
+.form-control:focus{
+  border-color: var(--focus);
+  box-shadow: 0 0 0 4px rgba(62,102,166,.18);
+  outline: none;
+}
+
+.bg-danger.form-control,
+.form-control.ng-invalid.ng-touched{
+  border-color: var(--danger);
+  background-color: #fff2f2;
+}
+
+.alert.alert-danger{
+  grid-column: 2 / -1;
+  background: #ffeaea;
+  border: 1px solid #ffd2d2;
+  color: #86161b;
+  border-radius: 10px;
+  padding: 8px 10px;
+  margin-top: 0;
+  font-size: 14px;
+  font-family: 'Times New Roman', Times, serif;
+  width: 61.5%;
+}
+
+.text-right{
+  margin-left: calc(var(--label-w) + var(--gap));
+  padding: 0 175px;
+}
+
+.btn{
+  border-radius: 10px;
+  padding: 10px 18px;
+  font-weight: 600;
+  transition: transform .06s, filter .2s, box-shadow .2s;
+
+}
+.btn.btn-primary{
+  border: 1px solid var(--btn-bd);
+  background: linear-gradient(180deg, var(--btn-start), var(--btn-end));
+  box-shadow: 0 4px 10px rgba(0,0,0,.08), inset 0 1px 0 rgba(255,255,255,.35);
+}
+.btn.btn-primary:hover{ filter: brightness(1.05); }
+.btn.btn-primary:active{ transform: translateY(1px); }
+button[disabled]{ opacity: .6; cursor: not-allowed; }
+
+h3{
+  margin: 20px 0 8px;
+  margin-left: calc(var(--label-w) + var(--gap));
+  font-family: 'Times New Roman', Times, serif;
+  padding: 0 120px;
+}
+p{
+  margin-left: calc(var(--label-w) + var(--gap));
+  border: 1px;
+  background: #fafbff;
+  border-radius: 12px;
+  padding: 0 120px;
+  color: #111827;
+  font-family: 'Times New Roman', Times, serif;
+}

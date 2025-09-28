@@ -1,3 +1,9 @@
 .preserve-newlines {
     white-space: pre-line;
 }
+
+p{
+  padding: 0 125px;
+  font-family: 'Times New Roman', Times, serif;
+  margin: 6px;
+}

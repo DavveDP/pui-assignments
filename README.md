@@ -5,6 +5,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Authors
 
 David Riley: david.riley@alumnos.upm.es
+Carolina Cuevas: carolina.cuevas@alumnos.upm.es
 
 ## Exercise progress:
 

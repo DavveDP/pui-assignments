@@ -1,0 +1,83 @@
+:host {
+  --btn-start: #edf3ff;
+  --btn-end:   #a1c4ff;
+  --btn-bd:    #203556;
+  --btn-txt:   #00193c;
+
+  --maxw: 1200px;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  padding: 40px 24px;
+}
+
+.content {
+  width: 100%;
+  max-width: var(--maxw);
+}
+
+.left-side h1 {
+  margin: 0 0 8px;
+  line-height: 1;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: clamp(28px, 3.2vw, 48px);
+}
+
+.left-side p {
+  margin: 0;
+  color: #626262;
+  font-size: clamp(14px, 1.6vw, 18px);
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.navbar { margin-top: 24px; }
+
+.col {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+}
+
+.btn.btn-outline-primary {
+  padding: 14px 30px;
+  border-radius: 10px;
+  border: 1.5px solid var(--btn-bd);
+  background: linear-gradient(180deg, var(--btn-start), var(--btn-end));
+  color: var(--btn-txt);
+  font-size: clamp(14px, 2vw, 22px);
+  font-weight: 375;
+  font-family: 'Times New Roman', Times, serif;
+
+  --bs-btn-color: var(--btn-txt);
+  --bs-btn-border-color: var(--btn-bd);
+  --bs-btn-hover-bg: transparent;
+  --bs-btn-hover-border-color: var(--btn-bd);
+  --bs-btn-active-bg: transparent;
+
+  transition: transform .06s ease, box-shadow .2s ease, filter .2s ease;
+}
+
+.btn.btn-outline-primary:hover {
+  filter: brightness(1.07);
+}
+
+.btn.btn-outline-primary:active,
+.btn.btn-outline-primary[aria-expanded="true"] {
+  transform: translateY(1px);
+  filter: brightness(1.07);
+}
+
+:host ::ng-deep .dropdown-menu {
+  border-radius: 10px;
+  padding: 12px;
+}
+
+:host ::ng-deep .dropdown-item {
+  border-radius: 10px;
+  padding: 2px 12px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
